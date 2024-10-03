@@ -1,69 +1,29 @@
-import TodoItem from './todo-item.js';
 import './styles.css';
+import { addTodoToDatabase, addNewTodo, rebuildTodo } from './todo-item.js';
+import { addProjectToList, addNewProject, rebuildProject } from './project.js';
 
-const todoList = [];
+// "Add New Todo" Button Logic
+addNewTodoBtn.addEventListener('click', () => {
+    newTodoDialog.showModal();
+});
 
-// // Query Selectors // //
+// "Add New Project" Button Logic
+addNewProjectBtn.addEventListener('click', () => {
+    newProjectDialog.showModal();
+});
 
-const todoSection = document.querySelector('#todo-section'); // Todo Section
-const addTodo = document.querySelector('#addTodo'); // Todo Form
-const todoTitle = document.querySelector('#todoTitle'); // Todo Title
-const todoDescription = document.querySelector('#todoDescription'); // Todo Description
-const dueDate = document.querySelector('#dueDate'); // Todo Due Date
-const todoPriority = document.querySelector('#todoPriority'); // Todo Priority
-const todoNotes = document.querySelector('#todoNotes'); // Todo Notes
-const highPriority = document.querySelector('#high').textContent; // High Priority Option
-const medPriority = document.querySelector('#medium').textContent; // Medium Priority Option
-const lowPriority = document.querySelector('#low').textContent; // Low Priority Option
-
-// Funtion to Create New Todo Item
-function addNewTodo() {
-    let todo = new TodoItem(
-        todoTitle.value,
-        todoDescription.value,
-        dueDate.value,
-        todoPriority.value,
-        todoNotes.value
-    );
-
-    todoList.push(todo);
-}
-
-// Form Submission Logic
+// New Todo Form Submission Logic
 addTodo.addEventListener('submit', event => {
     event.preventDefault();
     addNewTodo();
     addTodoToDatabase();
-    rebuild();
+    rebuildTodo();
 });
 
-// Rebuild Logic
-function rebuild() {
-    todoSection.textContent = '';
-    addTodoToDatabase();
-}
-
-// Priority Text
-function priorityCheck(priority) {
-    if (priority === 'high') {
-        return highPriority;
-    } else if (priority === 'medium') {
-        return medPriority;
-    } else if (priority === 'low') {
-        return lowPriority;
-    }
-}
-
-// Todo Database Logic
-function addTodoToDatabase() {
-    todoList.forEach((todo, index) => {
-        let todoBox = document.createElement('div');
-        todoBox.classList.add('todoBox');
-        todoBox.innerHTML = `<h3>${todo.title}</h3><p>${
-            todo.description
-        }</p><p>${todo.dueDate}</p><p>${priorityCheck(todo.priority)}</p><p>${
-            todo.notes
-        }</p>`;
-        todoSection.appendChild(todoBox);
-    });
-}
+// New Project Form Submission Logic
+addProject.addEventListener('submit', event => {
+    event.preventDefault();
+    addNewProject();
+    addProjectToList();
+    rebuildProject();
+});
