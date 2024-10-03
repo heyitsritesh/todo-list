@@ -17,6 +17,7 @@ const querySelectors = {
     addNewProjectBtn: document.querySelector('#addNewProjectBtn'),
     projectTitle: document.querySelector('#projectTitle'),
     projectDescription: document.querySelector('#projectDescription'),
+    todoProject: document.querySelector('#todoProject'),
 };
 
 export default querySelectors;
