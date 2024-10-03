@@ -1,6 +1,14 @@
 import './styles.css';
 import { addTodoToDatabase, addNewTodo, rebuildTodo } from './todo-item.js';
-import { addProjectToList, addNewProject, rebuildProject } from './project.js';
+import {
+    addProjectToList,
+    addNewProject,
+    rebuildProject,
+    availableProjects,
+    projectList,
+} from './project.js';
+
+availableProjects();
 
 // "Add New Todo" Button Logic
 addNewTodoBtn.addEventListener('click', () => {
@@ -17,6 +25,7 @@ addTodo.addEventListener('submit', event => {
     event.preventDefault();
     addNewTodo();
     addTodoToDatabase();
+    availableProjects();
     rebuildTodo();
 });
 
@@ -25,5 +34,6 @@ addProject.addEventListener('submit', event => {
     event.preventDefault();
     addNewProject();
     addProjectToList();
+    availableProjects();
     rebuildProject();
 });
