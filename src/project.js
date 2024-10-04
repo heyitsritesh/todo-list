@@ -1,4 +1,5 @@
 import querySelectors from './query-selectors.js';
+import { rebuildTodo } from './todo.js';
 
 // Array to store created project object
 const projectList = [];
@@ -8,10 +9,11 @@ let projectId = 1;
 
 // Project Constructor Class
 class Project {
-    constructor(id, name, description) {
+    constructor(id, name, description, todos = []) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.todos = todos;
     }
 }
 
@@ -36,24 +38,31 @@ function addNewProject() {
     projectList.push(project);
 }
 
-// Project List Logic
-function addProjectToList() {
-    for (let i = 1; i < projectList.length; i++) {
+// Render Projects from Database
+function renderProjectsDatabase() {
+    for (let i = 0; i < projectList.length; i++) {
         let projectName = document.createElement('div');
-        projectName.classList.add('projectName');
+        projectName.classList.add('project', `project-${projectList[i].id}`);
         projectName.innerHTML = `
         <h3>${projectList[i].name}</h3>
-        <p>${projectList[i].id}</p>
-        <p>${projectList[i].description}</p>
+        <p>ID: ${projectList[i].id}</p>
         `;
+
         querySelectors.projectsSection.appendChild(projectName);
+        let projectSelector = document.querySelector(
+            `.project-${projectList[i].id}`
+        );
+
+        projectSelector.addEventListener('click', () => {
+            rebuildTodo(projectList[i].todos);
+        });
     }
 }
 
 // Rebuild Logic
 function rebuildProject() {
     querySelectors.projectsSection.textContent = '';
-    addProjectToList();
+    renderProjectsDatabase();
 }
 
 // Available Projects as Options Under Todo
@@ -68,7 +77,7 @@ function availableProjects() {
 }
 
 export {
-    addProjectToList,
+    renderProjectsDatabase,
     addNewProject,
     rebuildProject,
     availableProjects,
