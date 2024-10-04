@@ -1,6 +1,6 @@
 const querySelectors = {
-    todoSection: document.querySelector('#todo-section'),
-    projectsSection: document.querySelector('#projects-section'),
+    todoSection: document.querySelector('#todos'),
+    projectsSection: document.querySelector('#projects'),
     addTodo: document.querySelector('#addTodo'),
     addProject: document.querySelector('#addProject'),
     todoTitle: document.querySelector('#todoTitle'),
@@ -18,6 +18,7 @@ const querySelectors = {
     projectTitle: document.querySelector('#projectTitle'),
     projectDescription: document.querySelector('#projectDescription'),
     todoProject: document.querySelector('#todoProject'),
+    allTodos: document.querySelector('#allTodos'),
 };
 
 export default querySelectors;
