@@ -6,10 +6,12 @@
         <title>Todo List</title>
     </head>
     <body>
-        <button id="addNewTodoBtn">Add New Todo</button>
-        <button id="addNewProjectBtn">Add New Project</button>
+        <header>
+            <button id="addNewTodoBtn">Add New Todo</button>
+            <button id="addNewProjectBtn">Add New Project</button>
+        </header>
 
-        <div id="content">
+        <div id="dialogs">
             <dialog id="newTodoDialog">
                 <form id="addTodo">
                     <div>
@@ -93,7 +95,16 @@
                 </form>
             </dialog>
         </div>
-        <div id="projects-section"></div>
-        <div id="todo-section"></div>
+        <div id="content">
+            <div id="projects-section">
+                <h2>Projects & Filter</h2>
+                <div id="allTodos"><h3>All Todos</h3></div>
+                <div id="projects"></div>
+            </div>
+            <div id="todo-section">
+                <h2>Todo Items</h2>
+                <div id="todos"></div>
+            </div>
+        </div>
     </body>
 </html>
