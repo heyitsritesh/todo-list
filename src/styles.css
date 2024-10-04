@@ -1,3 +1,35 @@
 form label {
     display: block;
 }
+
+#content {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.project,
+#allTodos {
+    border: 1px solid #d6d6d6;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+#allTodos h3 {
+    margin: 0 auto;
+}
+
+.project h3 {
+    margin-top: 0;
+}
+
+.project p {
+    margin-bottom: 0;
+}
