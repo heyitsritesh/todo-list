@@ -19,6 +19,7 @@ const querySelectors = {
     projectDescription: document.querySelector('#projectDescription'),
     todoProject: document.querySelector('#todoProject'),
     allTodos: document.querySelector('#allTodos'),
+    todoItemModal: document.querySelector('#todoItemModal'),
 };
 
 export default querySelectors;

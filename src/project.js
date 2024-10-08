@@ -1,5 +1,6 @@
 import querySelectors from './query-selectors.js';
 import { rebuildTodo } from './todo.js';
+import activeTab from './active-tab.js';
 
 // Array to store created project object
 const projectList = [];
@@ -36,16 +37,18 @@ function addNewProject() {
     );
 
     projectList.push(project);
+    console.log('New project added:', project);
+    console.log('Updated project list:', projectList);
 }
 
 // Render Projects from Database
 function renderProjectsDatabase() {
+    querySelectors.projectsSection.innerHTML = ''; // Clear existing projects
     for (let i = 0; i < projectList.length; i++) {
         let projectName = document.createElement('div');
         projectName.classList.add('project', `project-${projectList[i].id}`);
         projectName.innerHTML = `
         <h3>${projectList[i].name}</h3>
-        <p>ID: ${projectList[i].id}</p>
         `;
 
         querySelectors.projectsSection.appendChild(projectName);
@@ -54,7 +57,14 @@ function renderProjectsDatabase() {
         );
 
         projectSelector.addEventListener('click', () => {
+            console.log(
+                'Clicked project:',
+                projectList[i].name,
+                'Todos:',
+                projectList[i].todos
+            );
             rebuildTodo(projectList[i].todos);
+            activeTab(projectSelector);
         });
     }
 }

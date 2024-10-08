@@ -6,15 +6,51 @@
         <title>Todo List</title>
     </head>
     <body>
-        <header>
-            <button id="addNewTodoBtn">Add New Todo</button>
-            <button id="addNewProjectBtn">Add New Project</button>
-        </header>
+        <div class="app-container">
+            <header class="app-header">
+                <h1>Todo List</h1>
+                <div class="header-buttons">
+                    <button id="addNewTodoBtn" class="btn btn-primary">
+                        Add New Todo
+                    </button>
+                    <button id="addNewProjectBtn" class="btn btn-secondary">
+                        Add New Project
+                    </button>
+                </div>
+            </header>
+
+            <main class="app-content">
+                <aside class="sidebar">
+                    <div id="allTodos" class="sidebar-item active">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="sidebar-icon"
+                        >
+                            <path d="M3 6h18M3 12h18M3 18h18" />
+                        </svg>
+                        All Todos
+                    </div>
+                    <h2 class="sidebar-title">Projects</h2>
+                    <div id="projects"></div>
+                </aside>
+
+                <section class="main-content">
+                    <div id="todos" class="todo-list"></div>
+                </section>
+            </main>
+        </div>
 
         <div id="dialogs">
-            <dialog id="newTodoDialog">
-                <form id="addTodo">
-                    <div>
+            <dialog id="newTodoDialog" class="modal">
+                <h2 class="modal-title">Add New Todo</h2>
+                <form id="addTodo" class="modal-form">
+                    <div class="form-group">
                         <label for="todoTitle">Title</label>
                         <input
                             type="text"
@@ -23,23 +59,19 @@
                             required
                         />
                     </div>
-
-                    <div>
+                    <div class="form-group">
                         <label for="todoDescription">Description</label>
                         <textarea
                             name="todoDescription"
                             id="todoDescription"
-                            rows="10"
-                            cols="30"
+                            rows="3"
                         ></textarea>
                     </div>
-
-                    <div>
+                    <div class="form-group">
                         <label for="dueDate">Due Date</label>
                         <input type="date" id="dueDate" name="dueDate" />
                     </div>
-
-                    <div>
+                    <div class="form-group">
                         <label for="todoPriority">Priority</label>
                         <select name="todoPriority" id="todoPriority">
                             <option id="high" value="high">🔴 High</option>
@@ -49,29 +81,41 @@
                             <option id="low" value="low">🟢 Low</option>
                         </select>
                     </div>
-
-                    <div>
+                    <div class="form-group">
                         <label for="todoProject">Project</label>
                         <select name="todoProject" id="todoProject"></select>
                     </div>
-
-                    <div>
+                    <div class="form-group">
                         <label for="todoNotes">Notes</label>
                         <textarea
                             name="todoNotes"
                             id="todoNotes"
-                            rows="10"
-                            cols="30"
+                            rows="3"
                         ></textarea>
                     </div>
-
-                    <button type="submit" id="addTodoItem">Add Todo</button>
+                    <div class="modal-actions">
+                        <button
+                            type="submit"
+                            id="addTodoItem"
+                            class="btn btn-primary"
+                        >
+                            Add Todo
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            onclick="newTodoDialog.close()"
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </form>
             </dialog>
 
-            <dialog id="newProjectDialog">
-                <form id="addProject">
-                    <div>
+            <dialog id="newProjectDialog" class="modal">
+                <h2 class="modal-title">Add New Project</h2>
+                <form id="addProject" class="modal-form">
+                    <div class="form-group">
                         <label for="projectTitle">Title</label>
                         <input
                             type="text"
@@ -80,31 +124,34 @@
                             required
                         />
                     </div>
-
-                    <div>
+                    <div class="form-group">
                         <label for="projectDescription">Description</label>
                         <textarea
                             name="projectDescription"
                             id="projectDescription"
-                            rows="10"
-                            cols="30"
+                            rows="3"
                         ></textarea>
                     </div>
-
-                    <button type="submit" id="addProjectItem">Add Todo</button>
+                    <div class="modal-actions">
+                        <button
+                            type="submit"
+                            id="addProjectItem"
+                            class="btn btn-primary"
+                        >
+                            Add Project
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            onclick="newProjectDialog.close()"
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </form>
             </dialog>
-        </div>
-        <div id="content">
-            <div id="projects-section">
-                <h2>Projects & Filter</h2>
-                <div id="allTodos"><h3>All Todos</h3></div>
-                <div id="projects"></div>
-            </div>
-            <div id="todo-section">
-                <h2>Todo Items</h2>
-                <div id="todos"></div>
-            </div>
+
+            <dialog id="todoItemModal" class="modal"></dialog>
         </div>
     </body>
 </html>
